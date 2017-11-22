@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UniversityLibraryWeb.App_Start.NinjectWebCommon">
+    <Position X="13.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAQACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\NinjectWebCommon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.RouteConfig">
+    <Position X="11.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.WebApiConfig">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\WebApiConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Global">
+    <Position X="11.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.BooksController">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CABAAEAAAAAAACAAAAAAAAAACAAAAAgABAAAAIAADAQ=</HashCode>
+      <FileName>Controllers\BooksController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.BooksHistoricalsController">
+    <Position X="5.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\BooksHistoricalsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.DemandsController">
+    <Position X="5.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Controllers\DemandsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.HomeController">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.LoginController">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.RegisterController">
+    <Position X="3.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\RegisterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Controllers.SearchBooksController">
+    <Position X="7.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\SearchBooksController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Injections.Book" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CABAAAAAAAAAAEAAAAAAAAACEBAAAAwABAAAAIAABgQ=</HashCode>
+      <FileName>Injections\Book.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UniversityLibraryWeb.Injections.Historical" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQEAAAEAAAAAAAAAAAAAAACQAAAAEAAAAAgA=</HashCode>
+      <FileName>Injections\Historical.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UniversityLibraryWeb.Injections.Register" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAEAAAAAAAAAAAgAAAAQQAAAAAgAAAgA=</HashCode>
+      <FileName>Injections\Register.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UniversityLibraryWeb.Models.BookModel">
+    <Position X="8.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAEAACAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BookModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Models.DemandModel">
+    <Position X="10.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\DemandModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Models.SearchBooksModel">
+    <Position X="12" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SearchBooksModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversityLibraryWeb.Models.UserModel">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="UniversityLibraryWeb.Injections.IBook">
+    <Position X="0.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CABAAAAAAAAAAAAAAAAAAAACABAAAAgABAAAAIAABAQ=</HashCode>
+      <FileName>Injections\IBook.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UniversityLibraryWeb.Injections.IHistorical">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAA=</HashCode>
+      <FileName>Injections\IHistorical.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UniversityLibraryWeb.Injections.IRegister">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Injections\IRegister.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

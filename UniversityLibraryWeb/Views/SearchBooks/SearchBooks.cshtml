@@ -1,0 +1,126 @@
+﻿@model UniversityLibraryWeb.Models.SearchBooksModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts
+{
+    <script>
+        var booksUrl = 'api/books';
+        var booksFilteredUrl = 'api/books/getbooksfiltered';
+        var booksByTitle = 'api/books/getbooksbytitle';
+        var booksByPublisher = 'api/books/getbooksbypublisher';
+        var booksByAuthor = 'api/books/getbooksbyauthor';
+        var booksByTitleAndPublisher = 'api/books/getbooksbytitleandpublisher';
+        var booksByTitleAndAuthor = 'api/books/getbooksbytitleandauthor';
+        var booksByPublisherAndAuthor = 'api/books/getbooksbypublisherandauthor';
+        var defaultErrorMessage = 'An error has occurred and the search could not be completed, please try again.'
+
+        $(document).ready(function () {
+            $('#search').click(function () {
+                var title = $('#inputTitle').val();
+                var publisher = $('#inputPublisher').val();
+                var author = $('#inputAuthor').val();
+                var list = $('#booksList');
+                var queryUrl = booksUrl; //By default set to all books (No Filter)
+
+                if (title != '' && publisher != '' && author != '') {
+                    queryUrl = booksFilteredUrl + '/' + title + '/' + publisher + '/' + author; //All Filters
+                } else if (title != '' && publisher != '' && author == '') {
+                    queryUrl = booksByTitleAndPublisher + '/' + title + '/' + publisher; //Title and Publisher
+                } else if (title != '' && publisher == '' && author != '') {
+                    queryUrl = booksByTitleAndAuthor + '/' + title + '/' + author; //Title and Author
+                } else if (title == '' && publisher != '' && author != '') {
+                    queryUrl = booksByPublisherAndAuthor + '/' + publisher + '/' + author; // Publisher And Author
+                } else if (title != '') {
+                    queryUrl = booksByTitle + '/' + title; //Title
+                } else if (publisher != '') {
+                    queryUrl = booksByPublisher + '/' + publisher; // Publisher
+                } else if (author != '') {
+                    queryUrl = booksByAuthor + '/' + author; //Author
+                }
+
+                $.getJSON(queryUrl)
+                    .done(function (data) {
+                        list.empty();
+                        if (data != null) {
+                            $('<table class="table table-hover" id="booksContainer">').appendTo($('#booksList'));
+                            $('#booksContainer').append('<thead><tr><th>#</th><th>Title</th><th>Publisher</th><th>Description</th><th>Authors</th><th>Place Demand</th></tr></thead>');
+                            $.each(data, function (key, item) {
+                                $('#booksContainer').append('<tr><th>' + item.Id + '<input type="hidden" name="bookId_' + item.Id + '" value="' + item.Id + '"></th><td>' + item.Title + '</td><td>' + item.Publisher
+                                    + '</td><td data-toggle="tooltip" data-container="body" data-placement="right" title="' + item.Description + '">'
+                                    + item.Description.substring(0, 100) + '...</td><td>' + item.Authors
+                                    + '</td><td><button type="button" class="btn btn-info placeDemandButton">Place Demand</button></td></tr>');
+                            });
+                            $('[data-toggle="tooltip"]').tooltip();                            
+                            $('.placeDemandButton').on("click", placeDemand);
+                        } else {
+                            createInformationMessage(defaultErrorMessage);
+                        }
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        createInformationMessage(defaultErrorMessage);
+                    });
+            });            
+        });
+
+        function placeDemand(event) {            
+            var bookId = $(event.target).parent().parent().find('input:hidden').val();
+            var user = $('input[name="hdnUser"]').val();            
+            $.ajax({
+                type: "POST",
+                url: "api/books/" + bookId + "/" + user,
+                dataType: "json"
+            }).always(function (data) {
+                $("#bookDemandPlacedModal").modal();
+            });
+        }
+
+        function createInformationMessage(message) {
+            $('<li>', { text: message }).appendTo($('#booksList'));
+        }
+    </script>
+}
+
+<h2>Search - Published Books <span class="glyphicon glyphicon-book" aria-hidden="true"></span></h2>
+<br />
+<div class="form-inline">
+    <div class="row">
+        <div class="col-md-11">
+            <label for="inputTitle">Title:</label>
+            <input type="text" class="form-control" id="inputTitle" placeholder="Mammal Species of the World">
+            &nbsp;
+            <label for="inputPublisher">Publisher:</label>
+            <input type="text" class="form-control" id="inputPublisher" placeholder="JHU Press">
+            &nbsp;
+            <label for="inputAuthor">Author:</label>
+            <input type="text" class="form-control" id="inputAuthor" placeholder="Don E. Wilson">
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-primary" id="search">Search</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <br />
+    <div class="col-md-12" id="booksList">
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="bookDemandPlacedModal" tabindex="-1" role="dialog" aria-labelledby="bookDemandPlacedModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="bookDemandPlacedModalLabel">Book Demand Placed</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" role="alert"><strong>Thank you!</strong> Your request for a book demand has been placed.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

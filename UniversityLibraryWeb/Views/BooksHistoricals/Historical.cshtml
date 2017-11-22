@@ -1,0 +1,76 @@
+﻿@model UniversityLibraryWeb.Models.DemandModel
+
+@{    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts
+{
+    <script>
+        var demandsUrl = 'api/demands';       
+        var defaultErrorMessage = 'An error has occurred and the search could not be completed, please try again.'
+
+        $(document).ready(function () {
+            $.getJSON(demandsUrl)
+                    .done(function (data) {
+                        $('#historicalList').empty();
+                        if (data != null) {
+                            $('<table class="table table-hover" id="demandsContainer">').appendTo($('#historicalList'));
+                            $('#demandsContainer').append('<thead><tr><th>#</th><th>Book #</th><th>User Name</th><th>Date Placed</th><th>Cancel Demand</th></tr></thead>');
+                            $.each(data, function (key, item) {
+                                $('#demandsContainer').append('<tr><th>' + item.Id + '<input type="hidden" name="bookId_' + item.bookid + '" value="' + item.bookid + '"></th><td>' + item.bookid + '</td><td>'
+                                    + item.username + '</td><td>'+ item.date + '</td><td><button type="button" class="btn btn-primary cancelDemandButton">Cancel Demand</button></td></tr>');
+                            });                            
+                            $('.cancelDemandButton').on("click", cancelDemand);
+                        } else {
+                            createInformationMessage(defaultErrorMessage);
+                        }
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        createInformationMessage(defaultErrorMessage);
+                    });
+        });
+
+        function cancelDemand(event) {
+            var bookId = $(event.target).parent().parent().find('input:hidden').val();            
+            $.ajax({
+                type: "POST",
+                url: demandsUrl + "/" + bookId,
+                dataType: "json"
+            }).always(function (data) {
+                $(event.target).parent().parent()[0].remove();
+                $("#bookDemandPlacedModal").modal()
+            });                        
+        }
+
+        function createInformationMessage(message) {
+            $('<li>', { text: message }).appendTo($('#historicalList'));
+        }
+    </script>
+}
+
+<h2>Historical - Previous Book Demands <span class="glyphicon glyphicon-book" aria-hidden="true"></span></h2>
+<br />
+<div class="row">
+    <br />
+    <div class="col-md-12" id="historicalList">
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="bookDemandPlacedModal" tabindex="-1" role="dialog" aria-labelledby="bookDemandPlacedModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="bookDemandPlacedModalLabel">Book Demand Canceled</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" role="alert"><strong>Thank you!</strong> Your request to cancel the book demand has been completed.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
