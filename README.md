@@ -1,6 +1,9 @@
 # university-library
 University Library management application for members to perform registrations, search books, place demands and check historical of demands placed.  ASP.NET MVC 5 application with C#, MongoDB, Bootstrap, JQuery and Ninject for dependency injection.
 
+# design document and uml model
+You can find a detailed design document on the root folder with the name "Design - University Library.docx" and an image with the uml class diagram "ClassDiagram.png" (application also has a ClassDiagram.cd file wich maps all the classes, interfaces, etc from the app).
+
 # Sample screenshots
 ![home](https://user-images.githubusercontent.com/8292572/33153422-805e4e2c-cfc0-11e7-8e39-0c2b49a0467d.JPG)
 
@@ -83,4 +86,4 @@ Or instead of executing the bat you can run the following commands from command 
 - Another way of performing this action is to right click the solution and select the option "Restore NuGet packages" so any missing package will be restored
 - After successful build the application would be executed in a given port provided by IIS Express but the main url of the application would be "http://localhost:PORT_ASSIGNED_BY_IISEXPRESS/" for example "http://localhost:17368/"
 - Install the package Microsoft.AspNet.Mvc to the UniversityLibraryWeb.Tests project
--- Right clik the UniversityLibraryWeb.Tests and select Manage NuGet Packages, there search for Microsoft.AspNet.Mvc and install it (necessary to test the controllers by having the same MVC version as the web project)
+- Right clik the UniversityLibraryWeb.Tests and select Manage NuGet Packages, there search for Microsoft.AspNet.Mvc and install it (necessary to test the controllers by having the same MVC version as the web project)
